@@ -17,6 +17,14 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+    return redirect('login');
+});
+Route::get('/welcomee', function () {
+    return Inertia::render('User/Dashboard/Index');
+})->name('Homepage');
+
+
+Route::get('/halo', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -35,4 +43,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
